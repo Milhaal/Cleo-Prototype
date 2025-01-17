@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
+:root {
+  /*========== Color ==========*/
+    --black: #212936;
+    --grey: #64748B;
+    --blue: #0008CF;
+    --blue-10: rgba(0, 8, 207, 0.1);
+    --white: #fff;
+    --medium-grey: #E2E8F0;
+    --light-grey: #F2F2F2;
+    --green: #22C55E;
+    --green-10: rgba(34, 197, 94, 0.1);
+    --orange: #FDA817;
+    --red: #ED3B54;
+    --red-10: rgba(237, 59, 84, 0.1);
+
+  /*========== Font family ==========*/
+  --inter: "Inter", sans-serif;
+}
+
+/*==================== BASE ====================*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+input:focus {
+  outline: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*==================== BASE ====================*/
+
+.page_wrapper {
+  width: 100%;
+}
+.page_topbar {
+  display: flex;
+height: 56px;
+padding: 20px;
+align-items: flex-start;
+flex-shrink: 0;
+border-bottom: 1px solid var(--light-grey);
+background: var(--white);
+width: 100%;
+}
+.page_topbar-title {
+  color: #171717;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: 20px; /* 142.857% */
+}
+
+
+

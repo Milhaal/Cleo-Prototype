@@ -1,0 +1,129 @@
+.leftbar_wrapper {
+    height: 100vh;
+    max-width: 240px;
+    width: 27%;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+    align-self: stretch;
+    padding: 12px 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    border-right: 1px solid var(--light-grey);
+}
+
+.leftbar_logo {
+    width: 48px;
+    height: 20.997px;
+    flex-shrink: 0;
+}
+
+.leftbar_profile_link {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--blue-10);
+    padding: 8px 10px;
+
+}
+
+.leftbar_profile_link-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.leftbar_profile_link-pp {
+    width: 24px;
+    height: 24px;
+}
+
+.leftbar_profile_link-infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0;
+}
+
+.leftbar_profile_link-infos-name {
+    color: var(--black);
+    font-family: var(--inter);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    /* 142.857% */
+}
+
+.leftbar_profile_link-infos-role {
+    color: var(--grey);
+    font-family: var(--inter);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    /* 166.667% */
+}
+
+.leftbar_profile_link-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+
+.leftbar_links_box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.leftbar_links_box-title {
+    color: var(--grey);
+    font-family: var(--inter);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    /* 150% */
+}
+
+.leftbar_links_box-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    align-self: stretch;
+    width: 100%;
+}
+
+.leftbar_links_box-item {
+    display: flex;
+    width: 100%;
+    padding: 8px 10px;
+    align-items: center;
+    gap: 6px;
+    border-radius: 8px;
+    color: var(--black);
+    font-family: var(--inter);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    /* 142.857% */
+    cursor: pointer;
+}
+
+.leftbar_links_box-item-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.leftbar_links_box-item-active {
+    background-color: var(--light-grey);
+}
