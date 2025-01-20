@@ -23,8 +23,7 @@ function CourseCard({ course }) {
             {course.tools.map((tool, index) => (
               <img
                 key={index}
-                src={toolImages[tool] || "/images/default-tool.png"}
-                alt={tool}
+                src={toolImages[tool]?.image || "/images/default-tool.png"}                alt={tool}
                 className="course-tool-logo"
               />
             ))}
