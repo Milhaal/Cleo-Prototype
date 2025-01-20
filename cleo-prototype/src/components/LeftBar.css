@@ -1,17 +1,18 @@
 .leftbar_wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
     height: 100vh;
-    max-width: 240px;
-    width: 27%;
+    width: 220px;
+    /* max-width: 240px; */
     background-color: var(--white);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 25px;
-    align-self: stretch;
-    padding: 12px 10px;
-    flex-direction: column;
-    align-items: flex-start;
     border-right: 1px solid var(--light-grey);
+    padding: 12px 10px;
+    z-index: 10;
 }
 
 .leftbar_logo {

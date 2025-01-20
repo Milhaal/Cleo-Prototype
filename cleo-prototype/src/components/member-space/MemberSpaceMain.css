@@ -1,0 +1,194 @@
+.memberspace-wrapper {
+    width: 100%;
+}
+
+.member-topbar-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.member-topbar-title {
+    color: var(--black);
+    font-family: var(--inter);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 48px;
+    /* 126.42% */
+    letter-spacing: -0.16px;
+    padding-left: 30px;
+}
+
+.memberspace-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 45px 30px;
+    justify-content: space-between;
+}
+
+.memberspace-content-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 48%;
+}
+
+.memberspace-content-column-title {
+    color: var(--grey);
+    font-family: var(--inter);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    /* 120% */
+}
+
+.memberspace-content-column-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+    width: 100%;
+}
+
+.memberspace-content-column-item {
+    border-radius: 16px;
+    box-shadow: 0px 8px 40px 0px rgba(0, 0, 0, 0.04), 0px 2px 5px 0px rgba(0, 0, 0, 0.05), 0px 0px 2px 0px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.memberspace-content-column-item-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+}
+
+.memberspace-content-column-item-course-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+.memberspace-content-column-item-course-tag {
+    display: flex;
+    height: 18px;
+    padding: 3px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    border-radius: 7px;
+    border: 1px solid var(--light-grey);
+    color: var(--grey);
+    text-align: center;
+    font-family: var(--inter);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    /* 175% */
+}
+
+.memberspace-content-column-item-course-title {
+    color: var(--black);
+    font-family: var(--inter);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px;
+    /* 144.516% */
+}
+
+.memberspace-content-column-item-course-tools-box {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    height: 25px;
+}
+
+.memberspace-content-column-item-course-tools-item {
+    height: 100%;
+    width: auto;
+}
+
+.memberspace-content-column-item-progressbar {
+    height: 9px;
+    background-color: var(--medium-grey);
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.memberspace-content-column-item-progressbar-green-100 {
+    height: 100%;
+    width: 100%;
+    background-color: var(--dark-green);
+}
+
+.memberspace-content-column-item-progressbar-green-70 {
+    height: 100%;
+    width: 70%;
+    background-color: var(--dark-green);
+}
+
+.memberspace-content-column-item-progressbar-green-50 {
+    height: 100%;
+    width: 50%;
+    background-color: var(--dark-green);
+}
+
+.memberspace-content-column-item-progressbar-green-0 {
+    height: 100%;
+    width: 0%;
+    background-color: var(--dark-green);
+}
+
+.memberspace-content-column-item-img {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+}
+
+
+
+.memberspace-content-column-item-completion-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.memberspace-content-column-item-completion-rate {
+    color: var(--black);
+    font-family: var(--inter);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px;
+    /* 140% */
+}
+
+.memberspace-content-column-item-completion-text {
+    color: var(--grey);
+    font-family: var(--inter);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    /* 143.982% */
+}

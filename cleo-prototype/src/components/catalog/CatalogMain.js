@@ -1,14 +1,37 @@
 import "../Root.css";
+import courses from "../../data/courses/index-courses";
+import CourseCard from "./CourseCard";
+import "./CatalogMain.css";
 
 function CatalogMain() {
-    return (
-      <div className="page_wrapper">
-        <div className="page_topbar">
-          <h2 className="page_topbar-title">Catalogue</h2>
-          </div>
-
+  return (
+    <div className="page_wrapper">
+      <div className="page_topbar">
+        <h2 className="page_topbar-title">Catalogue</h2>
       </div>
-    );
-  }
-  
-  export default CatalogMain;
+
+      <div className="catalog-wrapper">
+        <div className="catalog-popular">
+          {/* Section des cours populaires (peut être remplie plus tard) */}
+        </div>
+        <div className="catalog-content">
+          <div className="catalog-content-filters">
+            {/* Filtres pour les cours (peut être ajouté plus tard) */}
+          </div>
+          <div className="catalog-content-main">
+            <div className="catalog-content-main-filters">
+              {/* Options de filtrage supplémentaires si nécessaire */}
+            </div>
+            <div className="catalog-content-list">
+              {courses.map((course) => (
+                <CourseCard key={course.id} course={course} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default CatalogMain;
