@@ -130,3 +130,56 @@
     line-height: 24px;
     /* 150% */
 }
+.course-page-header-bottom {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-shrink: 0;
+}
+.course-page-header-dropdown {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 24px;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-radius: 12px;
+    border: 1px solid #E2E8F0;
+    background: #FFF;
+    width: 100%;
+    cursor: pointer;
+  }
+  .course-page-header-dropdown-main {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .course-page-header-dropdown-title {
+    color: var(--black);
+    font-family: var(--inter);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  .course-page-header-dropdown-text {
+    color: var(--grey);
+    font-family: var(--inter);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 28.8px;
+    display: none;
+    margin-top: 15px;
+  }
+  .course-page-header-dropdown-text.show {
+    display: block;
+  }
+  .dropdown-icon {
+    transition: transform 0.3s ease;
+  }
+  .dropdown-icon.open {
+    transform: rotate(180deg);
+  }
+
+  /*=========Syllabus=========*/

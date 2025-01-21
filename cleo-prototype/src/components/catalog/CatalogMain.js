@@ -23,8 +23,8 @@ function CatalogMain() {
               {/* Options de filtrage supplémentaires si nécessaire */}
             </div>
             <div className="catalog-content-list">
-              {courses.map((course) => (
-                <CourseCard key={course.id} course={course} />
+              {courses.map((item) => (
+                <CourseCard key={item.id} item={item} />
               ))}
             </div>
           </div>

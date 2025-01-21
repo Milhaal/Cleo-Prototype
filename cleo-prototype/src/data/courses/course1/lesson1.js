@@ -1,6 +1,6 @@
 const lesson1 = {
   id: "lesson1",
-  title: "Rédiger des Offres d’Emploi qui Attirent et Convertissent",
+  title: "Questions métier ciblées en entretien grâce à l’IA",
   description: "Optimisez vos annonces avec l'IA pour attirer les meilleurs talents.",
   content: [
     {

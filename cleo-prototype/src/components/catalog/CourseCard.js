@@ -5,25 +5,34 @@ import toolImages from "../../data/ToolsData";
 import expertData from "../../data/ExpertData";
 import "../Root.css";
 
-function CourseCard({ course }) {
+function CourseCard({ item }) {
   const navigate = useNavigate();
+  const isCourse = item.type === "course";
+
+  const handleClick = () => {
+    if (isCourse) {
+      navigate(`/catalog/courses/${item.id}`);
+    } else {
+      navigate(`/catalog/courses/${item.courseId}/lesson/${item.id}`);
+    }
+  };
 
   // Trouver l'expert correspondant à l'ID de l'auteur du cours
-  const expert = expertData.find((exp) => exp.id === course.authorId);
+  const expert = expertData.find((exp) => exp.id === item.authorId);
 
   return (
-    <div
-      className="course-card"
-      onClick={() => navigate(`/catalog/courses/${course.id}`)}
-    >
+    <div className="course-card" onClick={handleClick}>
       <div className="course-card-content">
         <div className="course-card-top-row">
-          <div className="course-difficulty">{course.difficulty}</div>
+          <div className="course-difficulty">
+            {isCourse ? item.difficulty : item.courseDifficulty}
+          </div>
           <div className="course-tools">
-            {course.tools.map((tool, index) => (
+            {(isCourse ? item.tools : item.courseTools).map((tool, index) => (
               <img
                 key={index}
-                src={toolImages[tool]?.image || "/images/default-tool.png"}                alt={tool}
+                src={toolImages[tool]?.image || "/images/default-tool.png"}
+                alt={tool}
                 className="course-tool-logo"
               />
             ))}
@@ -31,8 +40,8 @@ function CourseCard({ course }) {
         </div>
 
         <div className="course-card-content-course">
-          <h3 className="course-title">{course.title}</h3>
-          <p className="course-description">{course.description}</p>
+          <h3 className="course-title">{item.title}</h3>
+          <p className="course-description">{item.description}</p>
         </div>
       </div>
 
@@ -54,10 +63,7 @@ function CourseCard({ course }) {
                 />
               </div>
             </div>
-
-
             <p className="author-position">{expert.position}</p>
-
           </div>
         </div>
       )}

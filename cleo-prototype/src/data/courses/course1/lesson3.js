@@ -1,6 +1,6 @@
-const lesson2 = {
-    id: "lesson2",
-    title: "Rédiger des emails efficaces pour transmettre une étude de cas à un candidat",
+const lesson3 = {
+    id: "lesson3",
+    title: "Simplifier les débriefs d’entretien avec l’IA",
     description: "Optimisez vos annonces avec l'IA pour attirer les meilleurs talents.",
     content: [
       {
@@ -32,4 +32,4 @@ const lesson2 = {
     ]
   };
   
-  export default lesson2;
+  export default lesson3;
