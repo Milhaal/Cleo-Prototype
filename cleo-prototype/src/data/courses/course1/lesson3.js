@@ -1,5 +1,7 @@
 const lesson3 = {
     id: "lesson3",
+    status: "Pas commencé",
+
     title: "Simplifier les débriefs d’entretien avec l’IA",
     description: "Optimisez vos annonces avec l'IA pour attirer les meilleurs talents.",
     content: [

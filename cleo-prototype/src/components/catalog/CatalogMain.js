@@ -2,6 +2,7 @@ import "../Root.css";
 import courses from "../../data/courses/index-courses";
 import CourseCard from "./CourseCard";
 import "./CatalogMain.css";
+import Footer from "../Footer";
 
 function CatalogMain() {
   return (
@@ -29,7 +30,9 @@ function CatalogMain() {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
+      
     </div>
   );
 }

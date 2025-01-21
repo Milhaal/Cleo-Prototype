@@ -65,6 +65,9 @@ img {
   border-bottom: 1px solid var(--light-grey);
   background: var(--white);
   width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .page_topbar-title {
@@ -78,6 +81,63 @@ img {
   align-items: center;
 }
 
+.breadcrumb-link {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.breadcrumb-link:hover {
+  text-decoration: underline;
+}
+
+.course-page-header-top-labels {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  align-self: stretch;
+}
+
+.course-page-header-top-labels-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.course-page-header-top-labels-name {
+  color: var(--grey);
+  font-family: var(--inter);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  /* 150% */
+}
+
+.course-page-header-top-labels-content {
+  display: flex;
+  height: 28.8px;
+  padding: 0.8px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 4.8px;
+  border-radius: 8px;
+  border: 0.8px solid #E2E8F0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.60) 100%), #FFF;
+  box-shadow: 0px 0px 0px 1.6px #F8FAFC inset, 0px 1.6px 3.2px -0.8px rgba(2, 6, 23, 0.05);
+  color: var(--black);
+  font-family: var(--inter);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  /* 150% */
+}
+
+.course-page-header-top-labels-content-img {
+  width: 25px;
+  height: auto;
+}
 
 /*==================== MEMBER ====================*/
 

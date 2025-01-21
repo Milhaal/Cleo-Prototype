@@ -5,7 +5,7 @@
     padding: 46px 40px;
     justify-content: center;
     align-items: flex-start;
-    gap: 10px;
+    gap: 50px;
 }
 
 .course-page-header {
@@ -130,6 +130,7 @@
     line-height: 24px;
     /* 150% */
 }
+
 .course-page-header-bottom {
     display: flex;
     width: 100%;
@@ -138,6 +139,7 @@
     gap: 16px;
     flex-shrink: 0;
 }
+
 .course-page-header-dropdown {
     display: flex;
     flex-direction: column;
@@ -149,21 +151,24 @@
     background: #FFF;
     width: 100%;
     cursor: pointer;
-  }
-  .course-page-header-dropdown-main {
+}
+
+.course-page-header-dropdown-main {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  .course-page-header-dropdown-title {
+}
+
+.course-page-header-dropdown-title {
     color: var(--black);
     font-family: var(--inter);
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
-  }
-  .course-page-header-dropdown-text {
+}
+
+.course-page-header-dropdown-text {
     color: var(--grey);
     font-family: var(--inter);
     font-size: 14px;
@@ -171,15 +176,208 @@
     line-height: 28.8px;
     display: none;
     margin-top: 15px;
-  }
-  .course-page-header-dropdown-text.show {
-    display: block;
-  }
-  .dropdown-icon {
-    transition: transform 0.3s ease;
-  }
-  .dropdown-icon.open {
-    transform: rotate(180deg);
-  }
+}
 
-  /*=========Syllabus=========*/
+.course-page-header-dropdown-text.show {
+    display: block;
+}
+
+.dropdown-icon {
+    transition: transform 0.3s ease;
+}
+
+.dropdown-icon.open {
+    transform: rotate(180deg);
+}
+
+/*=========Syllabus=========*/
+.course-syllabus {
+    max-width: 950px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.course-syllabus-title-box {
+    margin-bottom: 20px;
+}
+
+.course-syllabus-title {
+    color: var(--black);
+    font-family: var(--inter);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px;
+    /* 140% */
+}
+
+.course-syllabus-subtitle {
+    color: var(--grey);
+    font-family: var(--inter);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    /* 150% */
+}
+
+.course-syllabus-wrapper {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #E2E8F0;
+}
+
+.course-syllabus-wrapper-top {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    padding: 8px 12px;
+    border-bottom: 1px solid #E2E8F0;
+    background: #F1F5F9;
+}
+
+.course-syllabus-wrapper-label {
+    color: #475569;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    /* 150% */
+}
+
+.course-syllabus-wrapper-label-column-1 {
+    width: 70%;
+}
+
+.course-syllabus-wrapper-label-column-2 {
+    width: 20%;
+}
+
+.course-syllabus-list {
+    list-style: none;
+    padding: 0;
+    overflow: hidden;
+}
+
+.course-syllabus-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    background: #fff;
+    transition: background 0.3s ease;
+}
+
+.course-syllabus-list li:last-child {
+    border-bottom: none;
+}
+
+.course-syllabus-list li:hover {
+    background: #f9f9f9;
+}
+
+.course-syllabus-list a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.course-syllabus-list a:hover {
+    color: #007bff;
+}
+
+.syllabus-status {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    width: 20%;
+}
+.syllabus-status-box {
+    border-radius: 100px;
+    background: #FFF;
+    box-shadow: 0px 0px 0px 1px #E2E8F0 inset;
+    display: flex;
+padding: 4px 12px;
+align-items: center;
+gap: 8px;
+}
+
+.syllabus-status-box-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-terminé .syllabus-status-box-dot {
+    background-color: var(--green);
+}
+
+.status-en-cours .syllabus-status-box-dot {
+    background-color: var(--orange);
+}
+
+.status-pas-commencé .syllabus-status-box-dot {
+    background-color: var(--grey);
+}
+
+
+
+.status-text {
+    font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 18px; /* 150% */
+}
+.status-terminé .status-text {
+    color: var(--green);
+}
+
+.status-en-cours .status-text {
+    color: var(--orange);
+}
+
+.status-pas-commencé .status-text {
+    color: var(--grey);
+}
+.syllabus-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 70%;
+}
+
+.syllabus-title {
+    color: #212936;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 19.2px;
+    /* 120% */
+}
+
+.syllabus-description {
+    color: #64748B;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 21px;
+    /* 150% */
+}
+.syllabus-icon {
+    font-size: 18px;
+    color: var(--grey);
+}

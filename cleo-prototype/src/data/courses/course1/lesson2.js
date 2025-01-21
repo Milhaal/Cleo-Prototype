@@ -1,5 +1,7 @@
 const lesson2 = {
     id: "lesson2",
+    status: "En cours",
+
     title: "Rédiger des emails efficaces pour transmettre une étude de cas à un candidat",
     description: "Optimisez vos annonces avec l'IA pour attirer les meilleurs talents.",
     content: [

@@ -14,14 +14,14 @@ const formatLessons = (course, lessons) => {
     type: "lesson",
     courseId: course.id,
     courseTitle: course.title,  // Ajout du titre pour affichage correct
-    description: lesson.description,
+    lessonDescription: lesson.description,
+    status: lesson.status,      // Ajout de la propriété status ici
     courseDifficulty: course.difficulty,
     courseTools: course.tools,
     courseRole: course.role,
     authorId: course.authorId
   }));
 };
-
 const courses = [
   { ...course1, type: "course" },
   ...formatLessons(course1, [lesson1Course1, lesson2Course1, lesson3Course1]),
