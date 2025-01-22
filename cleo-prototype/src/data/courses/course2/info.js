@@ -1,9 +1,10 @@
 const course2 = {
     id: "course2",
+    trial: true,
     title: "Introduction à l'IA pour les RH",
-    difficulty: "Débutant",
+    difficulty: "Avancé",
     tools: ["ChatGPT"],
-    role: "RH",
+    role: "Communication",
     description: "Comprenez comment l'IA peut dynamiser votre fonction RH.",
     author: {
       name: "Lisa T.",

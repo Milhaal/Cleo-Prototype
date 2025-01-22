@@ -19,14 +19,16 @@ const formatLessons = (course, lessons) => {
     courseDifficulty: course.difficulty,
     courseTools: course.tools,
     courseRole: course.role,
+    courseTrial: course.trial || false,  // Ajout de la propriété courseTrial (false par défaut)
     authorId: course.authorId
   }));
 };
+
 const courses = [
-  { ...course1, type: "course" },
+  { ...course1, type: "course", courseTrial: course1.trial || false },
   ...formatLessons(course1, [lesson1Course1, lesson2Course1, lesson3Course1]),
 
-  { ...course2, type: "course" },
+  { ...course2, type: "course", courseTrial: course2.trial || false },
   ...formatLessons(course2, [lesson1Course2, lesson2Course2, lesson3Course2])
 ];
 
