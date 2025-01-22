@@ -69,6 +69,10 @@ img {
   top: 0;
   z-index: 1000;
 }
+.page_topbar-space-between {
+  justify-content: space-between;
+  align-items: center;
+}
 
 .page_topbar-title {
   color: #171717;
@@ -80,7 +84,24 @@ img {
   display: flex;
   align-items: center;
 }
-
+.page_topbar-button {
+  display: flex;
+  padding: 6px 12px;
+  align-items: center;
+  gap: 3px;
+  border-radius: 7px;
+  background: #0008CF;
+  color: #FFF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+.page_topbar-button span {
+  font-size: 16px;
+}
 .breadcrumb-link {
   color: var(--blue);
   text-decoration: none;

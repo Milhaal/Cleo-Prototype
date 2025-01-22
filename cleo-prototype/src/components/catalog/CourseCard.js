@@ -20,13 +20,21 @@ function CourseCard({ item }) {
   // Trouver l'expert correspondant à l'ID de l'auteur du cours
   const expert = expertData.find((exp) => exp.id === item.authorId);
 
+  const displayTrialLabel = isCourse ? item.trial : item.courseTrial;
+
   return (
     <div className="course-card" onClick={handleClick}>
       <div className="course-card-content">
         <div className="course-card-top-row">
-          <div className="course-difficulty">
-            {isCourse ? item.difficulty : item.courseDifficulty}
+          <div className="course-card-top-row-box">
+            <div className="course-difficulty">
+              {isCourse ? item.difficulty : item.courseDifficulty}
+            </div>
+            <div className={`course-trial ${displayTrialLabel ? '' : 'catalog-trial'}`}>  
+              {displayTrialLabel ? "Essai" : ""}
+            </div>
           </div>
+          
           <div className="course-tools">
             {(isCourse ? item.tools : item.courseTools).map((tool, index) => (
               <img

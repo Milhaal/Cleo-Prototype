@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./LeftBar.css";
 import "./Root.css";
 
@@ -20,28 +20,48 @@ function LeftBar() {
       <div className="leftbar_links_box">
         <p className="leftbar_links_box-title">Vue Admin</p>
         <div className="leftbar_links_box-wrap">
-          <Link to="/" className="leftbar_links_box-item">
+          <NavLink 
+            to="/" 
+            className={({ isActive }) => 
+              isActive ? "leftbar_links_box-item leftbar_links_box-item-active" : "leftbar_links_box-item"
+            }
+          >
             <img className="leftbar_links_box-item-icon" src="/images/dashboard-icon.png" alt="Dashboard Icon" />
             Dashboard
-          </Link>
-          <Link to="/team" className="leftbar_links_box-item">
+          </NavLink>
+          <NavLink 
+            to="/team" 
+            className={({ isActive }) => 
+              isActive ? "leftbar_links_box-item leftbar_links_box-item-active" : "leftbar_links_box-item"
+            }
+          >
             <img className="leftbar_links_box-item-icon" src="/images/team-icon.png" alt="Team Icon" />
             Équipe
-          </Link>
+          </NavLink>
         </div>
       </div>
 
       <div className="leftbar_links_box">
         <p className="leftbar_links_box-title">Vue Générale</p>
         <div className="leftbar_links_box-wrap">
-          <Link to="/catalog" className="leftbar_links_box-item">
+          <NavLink 
+            to="/catalog" 
+            className={({ isActive }) => 
+              isActive ? "leftbar_links_box-item leftbar_links_box-item-active" : "leftbar_links_box-item"
+            }
+          >
             <img className="leftbar_links_box-item-icon" src="/images/catalog-icon.png" alt="Catalog Icon" />
             Catalogue
-          </Link>
-          <Link to="/memberspace" className="leftbar_links_box-item">
+          </NavLink>
+          <NavLink 
+            to="/memberspace" 
+            className={({ isActive }) => 
+              isActive ? "leftbar_links_box-item leftbar_links_box-item-active" : "leftbar_links_box-item"
+            }
+          >
             <img className="leftbar_links_box-item-icon" src="/images/member-icon.png" alt="Member Icon" />
             Mon espace
-          </Link>
+          </NavLink>
         </div>
       </div>
     </div>
