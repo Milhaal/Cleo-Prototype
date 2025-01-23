@@ -130,6 +130,10 @@
     line-height: 24px;
     /* 150% */
 }
+.course-page-header-top-button:hover {
+    cursor: pointer;
+
+}
 
 .course-page-header-bottom {
     display: flex;
@@ -272,6 +276,7 @@
     border-bottom: 1px solid #e0e0e0;
     background: #fff;
     transition: background 0.3s ease;
+    cursor: pointer;
 }
 
 .course-syllabus-list li:last-child {

@@ -1,8 +1,7 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "../Root.css";
 import teamData from "../../data/TeamData";
-import toolImages from "../../data/ToolsData";
 import "./TeamMember.css";
 
 function TeamMember() {
@@ -12,6 +11,20 @@ function TeamMember() {
   if (!member) {
     return <h2>Membre introuvable</h2>;
   }
+
+  // Fonction pour obtenir la classe CSS en fonction du statut du cours
+  const getStatusClass = (status) => {
+    switch (status) {
+      case "Terminé":
+        return "team-course-status-done";
+      case "En cours":
+        return "team-course-status-inprogress";
+      case "Pas commencé":
+        return "team-course-status-notstarted";
+      default:
+        return "";
+    }
+  };
 
   return (
     <div className="profile_wrapper">
@@ -46,39 +59,48 @@ function TeamMember() {
         </div>
 
         <div className="team-courses-container">
-        <div className="team-courses-header">
-          <div className="team-course-cell team-course-name">Nom</div>
-          <div className="team-course-cell team-course-role">Rôle</div>
-          <div className="team-course-cell team-course-tool">Outils</div>
-          <div className="team-course-cell team-course-status">Statut</div>
-          <div className="team-course-cell team-course-date">Date</div>
-        </div>
-
-        {member.courses.length > 0 ? (
-          member.courses.map((course, index) => (
-            <div key={index} className="team-courses-row">
-              <div className="team-course-cell">{course.name}</div>
-              <div className="team-course-cell">{course.role}</div>
-              <div className="team-course-cell">
-                <img
-                  src={toolImages[course.tool]}
-                  alt={course.tool}
-                  className="tool-icon"
-                />
-              </div>
-              <div className="team-course-cell">{course.status}</div>
-              <div className="team-course-cell">{course.date || "--"}</div>
-            </div>
-          ))
-        ) : (
-          <div className="team-courses-empty">
-            <p>Aucun cours suivi</p>
+          <div className="team-courses-header">
+            <div className="team-course-cell team-course-name">Nom</div>
+            <div className="team-course-cell team-course-role">Rôle</div>
+            <div className="team-course-cell team-course-tool">Outils</div>
+            <div className="team-course-cell team-course-status">Statut</div>
+            <div className="team-course-cell team-course-date">Date</div>
           </div>
-        )}
-      </div>
-      </div>
 
-      
+          {member.courses.length > 0 ? (
+            member.courses.map((course, index) => (
+              <div key={index} className="team-courses-row">
+                <div className="team-course-cell team-course-name">
+                  <Link to={`/catalog/courses/${course.id}`} className="course-link">
+                    <span>{course.name}</span>
+                  </Link>
+                </div>
+                <div className="team-course-cell team-course-role">
+                  <span>{course.role}</span>
+                </div>
+                <div className="team-course-cell team-course-tool">
+                  <img
+                    src={course.tool}
+                    alt={course.name}
+                    className="tool-icon"
+                  />
+                </div>
+                <div className={`team-course-cell team-course-status ${getStatusClass(course.status)}`}>
+                  <div className="team-course-status-dot"></div>
+                  <span>{course.status}</span>
+                </div>
+                <div className="team-course-cell team-course-date">
+                  <span>{course.date || "--"}</span>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="team-courses-empty">
+              <p>Aucun cours suivi</p>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

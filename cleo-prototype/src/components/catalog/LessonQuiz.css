@@ -1,0 +1,138 @@
+.quiz-container {
+    margin-top: 40px;
+    padding: 20px;
+    border-radius: 14.71px;
+    border: 1.226px solid #E2E8F0;
+    background: #FFF;
+    box-shadow: 0px 2.452px 4.903px -1.226px rgba(2, 6, 23, 0.05);
+    background: #fff;
+    text-align: center;
+  }
+  
+  /* Barre de progression */
+  .quiz-progress-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 15px;
+  }
+  
+  .quiz-progress-step {
+    width: 100%;
+    height: 6px;
+    background: #E2E8F0;
+    border-radius: 5px;
+  }
+  
+  .quiz-progress-step.active {
+    background: #0008CF;
+  }
+  
+  /* Question & réponses */
+  .quiz-question {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  .quiz-question h3 {
+    color: var(--blue, #0008CF);
+    text-align: center;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25.742px; /* 150% */
+  }
+  .quiz-question p {
+    color: #212936;
+text-align: center;
+font-family: Inter;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: 20px; /* 140% */
+padding: 10px 0;
+  }
+  
+  .quiz-option {
+    width: 90%;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 9.806px;
+    border: 1.226px solid #E2E8F0;
+    background-color: var(--white);
+    cursor: pointer;
+    font-size: 16px;
+    text-align: left;
+    transition: all 0.3s;
+  }
+  
+  .quiz-option:hover {
+    background-color: #d0e1ff;
+  }
+  
+  .quiz-option.selected {
+    background-color: #d0e1ff;
+    border-color: #d0e1ff;
+  }
+  
+  /* Boutons */
+  .quiz-validate-btn,
+  .quiz-continue-btn,
+  .quiz-retry-btn,
+  .quiz-finish-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .quiz-validate-btn {
+    background: #ccc;
+    color: #fff;
+  }
+  
+  .quiz-validate-btn.active {
+    background: #0008CF;
+  }
+  
+  .quiz-validate-btn.disabled {
+    background: #e0e0e0;
+    cursor: not-allowed;
+  }
+  
+  .quiz-continue-btn {
+    background: #0008CF;
+    color: #fff;
+  }
+  
+  .quiz-retry-btn {
+    background: red;
+    color: #fff;
+  }
+  
+  .quiz-finish-btn {
+    background: green;
+    color: #fff;
+  }
+  
+  /* Feedback */
+  .quiz-feedback {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .quiz-feedback h3 {
+    font-size: 22px;
+  }
+  
+  .quiz-explanation {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+  }

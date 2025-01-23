@@ -1,15 +1,21 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import courses from "../../data/courses/index-courses";
-import { Link } from "react-router-dom";
 import "./CoursePage.css";
 import toolImages from "../../data/ToolsData";
 import "../Root.css";
 import Footer from "../Footer";
+import PanelSendCourse from "./PanelSendCourse";
 
 function CoursePage() {
   const { courseId } = useParams();
   const course = courses.find(c => c.id === courseId);
+
+  // Ouverture/Fermeture du panel
+  const [isPanelOpen, setIsPanelOpen] = useState(false);
+
+  const openPanel = () => setIsPanelOpen(true);
+  const closePanel = () => setIsPanelOpen(false);
 
   // État pour gérer chaque dropdown individuellement
   const [dropdownStates, setDropdownStates] = useState({
@@ -26,10 +32,13 @@ function CoursePage() {
   };
 
   const lessons = courses.filter(item => item.courseId === courseId && item.type === "lesson");
-  console.log("Leçons récupérées :", lessons);
+
   if (!course) {
     return <h2>Cours introuvable</h2>;
   }
+
+  // Trouver la première leçon du cours
+  const firstLesson = lessons.length > 0 ? lessons[0] : null;
 
   return (
     <div className="course-page">
@@ -45,7 +54,6 @@ function CoursePage() {
 
       <div className="course-page-wrapper">
         {/* =====Header==== */}
-
         <div className="course-page-header">
           <div className="course-page-header-top">
             <div className="course-page-header-top-infos">
@@ -78,12 +86,23 @@ function CoursePage() {
           </div>
 
           <div className="course-page-header-top-button-box">
-            <a className="course-page-header-top-button">Voir le cours
-              <span className="material-symbols-outlined">arrow_forward</span>
-            </a>
-            <a className="course-page-header-top-button">
-              <span className="material-symbols-outlined">add</span> Ajouter le cours pour mon équipe
-            </a>
+            {firstLesson ? (
+              <Link
+                to={`/catalog/courses/${courseId}/lesson/${firstLesson.id}`}
+                className="course-page-header-top-button"
+              >
+                Voir le cours
+                <span className="material-symbols-outlined">arrow_forward</span>
+              </Link>
+            ) : (
+              <span className="course-page-header-top-button disabled">
+                Voir le cours
+                <span className="material-symbols-outlined">arrow_forward</span>
+              </span>
+            )}
+            <a className="course-page-header-top-button" onClick={openPanel}>
+  <span className="material-symbols-outlined">add</span> Ajouter le cours pour mon équipe
+</a>
           </div>
 
           <div className="course-page-header-bottom">
@@ -154,7 +173,6 @@ function CoursePage() {
                         <div className="syllabus-status-box">
                         <span className="syllabus-status-box-dot"></span>
                         <span className="status-text">{lesson.status || "Inconnu"}</span>
-
                         </div>
                       </div>
                       <span className="material-symbols-outlined syllabus-icon">arrow_forward</span>
@@ -165,9 +183,8 @@ function CoursePage() {
             </ul>
           </div>
         </div>
-        <Footer/>
-      </div>
-      
+        <Footer />
+        {isPanelOpen && <PanelSendCourse courseId={courseId} onClose={closePanel} />}      </div>
     </div>
   );
 }

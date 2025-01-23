@@ -178,6 +178,30 @@ const lesson1 = {
       linkText: "Rédiger des emails efficaces pour transmettre une étude de cas.",
       nextLessonId: "lesson2"
     }
+  ],
+  quiz: [
+    {
+      question: "Quel est le format recommandé pour une offre d’emploi efficace ?",
+      options: [
+        "Introduction, missions principales, compétences, avantages.",
+        "Missions principales, contraintes, conclusion, ton.",
+        "Introduction, résultats attendus, contraintes, rémunération.",
+        "Contexte, ton, rémunération, conclusion."
+      ],
+      correct: "Introduction, missions principales, compétences, avantages.",
+      explanation: "L'introduction engageante attire l'attention, les missions décrivent les responsabilités et les compétences montrent les attentes."
+    },
+    {
+      question: "Quel est l'objectif principal d'un entretien structuré ?",
+      options: [
+        "Tester les compétences du candidat",
+        "Définir un processus de recrutement",
+        "Évaluer l'adéquation culturelle",
+        "Éviter les biais inconscients"
+      ],
+      correct: "Éviter les biais inconscients",
+      explanation: "Un entretien structuré réduit les biais en évaluant chaque candidat de manière équitable."
+    }
   ]
 };
 

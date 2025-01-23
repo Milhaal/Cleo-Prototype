@@ -1,28 +1,38 @@
+import courses from "./courses/index-courses";
+import toolImages from "./ToolsData";
+
+// Fonction pour récupérer un cours par son ID
+const getCourseById = (courseId) => {
+  const course = courses.find((c) => c.courseId === courseId);
+  if (course) {
+    return {
+      id: course.courseId,
+      name: course.courseTitle,
+      role: course.courseRole,
+      tool: toolImages[course.courseTools[0]]?.image || "/images/default-tool.png",
+    };
+  }
+  return null;
+};
+
+// Données de l'équipe
 const teamData = [
-    {
-      id: 1,
-      name: "Pauline Mila-Alonso",
-      email: "pauline@cleo.academy",
-      lastLogin: "12/01/2025",
-      progress: 100,
-      profileImage: "/images/pauline-pp.png",
-      courses: [
-        {
-          name: "Introduction à l'IA pour les RH",
-          role: "RH",
-          tool: "./images/copilot-logo.png",
-          status: "Terminé",
-          date: "12/01/2025",
-        },
-        {
-          name: "Écrire des prompts efficaces avec Gemini",
-          role: "Marketing",
-          tool: "Gemini",
-          status: "En cours",
-          date: "15/01/2025",
-        }
-      ]
-    },
+  {
+    id: 1,
+    name: "Pauline Mila-Alonso",
+    email: "pauline@cleo.academy",
+    lastLogin: "12/01/2025",
+    progress: 100,
+    profileImage: "/images/pauline-pp.png",
+    courses: [
+      { id: "course1", status: "Terminé", date: "12/01/2025" },
+      { id: "course2", status: "En cours", date: "15/01/2025" }
+    ].map((course) => ({
+      ...getCourseById(course.id),
+      status: course.status,
+      date: course.date,
+    })),
+  },
     {
       id: 2,
       name: "Alexandre Bloch",
@@ -31,14 +41,13 @@ const teamData = [
       progress: 50,
       profileImage: "/images/alexandre-pp.png",
       courses: [
-        {
-          name: "Coding avec Copilot",
-          role: "Développeur",
-          tool: "Copilot",
-          status: "Pas commencé",
-          date: "--",
-        }
-      ]
+        { id: "course1", status: "Terminé", date: "12/01/2025" },
+        { id: "course2", status: "Pas commencé", date: "15/01/2025" }
+      ].map((course) => ({
+        ...getCourseById(course.id),
+        status: course.status,
+        date: course.date,
+      })),
     },
     {
       id: 3,
@@ -48,14 +57,13 @@ const teamData = [
       progress: 60,
       profileImage: "/images/anaelle-pp.png",
       courses: [
-        {
-          name: "Coding avec Copilot",
-          role: "Développeur",
-          tool: "Copilot",
-          status: "Pas commencé",
-          date: "--",
-        }
-      ]
+        { id: "course1", status: "Terminé", date: "12/01/2025" },
+        { id: "course2", status: "Pas commencé", date: "15/01/2025" }
+      ].map((course) => ({
+        ...getCourseById(course.id),
+        status: course.status,
+        date: course.date,
+      })),
     },
     {
       id: 4,
@@ -65,14 +73,13 @@ const teamData = [
       progress: 80,
       profileImage: "/images/naomie-pp.png",
       courses: [
-        {
-          name: "Coding avec Copilot",
-          role: "Développeur",
-          tool: "Copilot",
-          status: "Pas commencé",
-          date: "--",
-        }
-      ]
+        { id: "course1", status: "Terminé", date: "12/01/2025" },
+        { id: "course2", status: "Pas commencé", date: "15/01/2025" }
+      ].map((course) => ({
+        ...getCourseById(course.id),
+        status: course.status,
+        date: course.date,
+      })),
     },
     {
       id: 5,
@@ -82,14 +89,13 @@ const teamData = [
       progress: 35,
       profileImage: "/images/aron-pp.png",
       courses: [
-        {
-          name: "Coding avec Copilot",
-          role: "Développeur",
-          tool: "Copilot",
-          status: "Pas commencé",
-          date: "--",
-        }
-      ]
+        { id: "course1", status: "Terminé", date: "12/01/2025" },
+        { id: "course2", status: "Pas commencé", date: "15/01/2025" }
+      ].map((course) => ({
+        ...getCourseById(course.id),
+        status: course.status,
+        date: course.date,
+      })),
     },
     {
       id: 6,
@@ -99,14 +105,13 @@ const teamData = [
       progress: 0,
       profileImage: "/images/arthur-pp.png",
       courses: [
-        {
-          name: "Coding avec Copilot",
-          role: "Développeur",
-          tool: "Copilot",
-          status: "Pas commencé",
-          date: "--",
-        }
-      ]
+        { id: "course1", status: "En cours", date: "12/01/2025" },
+        { id: "course2", status: "Pas commencé", date: "15/01/2025" }
+      ].map((course) => ({
+        ...getCourseById(course.id),
+        status: course.status,
+        date: course.date,
+      })),
     }
     
   ];

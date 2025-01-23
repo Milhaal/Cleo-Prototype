@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import courses from "../../data/courses/index-courses";
 import toolImages from "../../data/ToolsData";
 import "./LessonPage.css";
 import "../Root.css";
 import Footer from "../Footer";
+import LessonQuiz from "./LessonQuiz";
 
 function LessonPage() {
   const { courseId, lessonId } = useParams();
@@ -13,6 +14,8 @@ function LessonPage() {
   const lesson = courses.find(
     (c) => c.type === "lesson" && c.courseId === courseId && c.id === lessonId
   );
+
+  const [quizCompleted, setQuizCompleted] = useState(false);
 
   if (!lesson) {
     return <h2>Leçon introuvable</h2>;
@@ -78,28 +81,28 @@ function LessonPage() {
                       </Link>
                     </p>
                   );
-                  case "link-lesson":
-                    const nextLessonIndex = courses.findIndex(
-                      (c) => c.type === "lesson" && c.courseId === courseId && c.id === lessonId
-                    ) + 1; // Trouve l'index de la leçon actuelle et ajoute 1
-                  
-                    const nextLesson = courses[nextLessonIndex];
-                  
-                    return (
-                      nextLesson && nextLesson.type === "lesson" ? (
-                        <p key={item.id} className="lesson-next">
-                          {item.value}
-                          <Link 
-                            to={`/catalog/courses/${lesson.courseId}/lesson/${nextLesson.id}`} 
-                            className="lesson-link"
-                          >
-                            {item.linkText}
-                          </Link>
-                        </p>
-                      ) : (
-                        <p key={item.id} className="lesson-next">Fin du cours, pas de leçon suivante.</p>
-                      )
-                    );
+                case "link-lesson":
+                  const nextLessonIndex = courses.findIndex(
+                    (c) => c.type === "lesson" && c.courseId === courseId && c.id === lessonId
+                  ) + 1; // Trouve l'index de la leçon actuelle et ajoute 1
+
+                  const nextLesson = courses[nextLessonIndex];
+
+                  return (
+                    nextLesson && nextLesson.type === "lesson" ? (
+                      <p key={item.id} className="lesson-next">
+                        {item.value}
+                        <Link
+                          to={`/catalog/courses/${lesson.courseId}/lesson/${nextLesson.id}`}
+                          className="lesson-link"
+                        >
+                          {item.linkText}
+                        </Link>
+                      </p>
+                    ) : (
+                      <p key={item.id} className="lesson-next">Fin du cours, pas de leçon suivante.</p>
+                    )
+                  );
                 case "subtitle":
                   return <h2 key={item.id} className="lesson-subtitle">{item.value}</h2>;
                 case "prompt":
@@ -127,13 +130,47 @@ function LessonPage() {
                   return null;
               }
             })}
+            <LessonQuiz questions={lesson.quiz} onQuizComplete={setQuizCompleted} />
+
           </div>
 
-          <div className="lesson-content-recap-box"></div>
+          <div className="lesson-content-recap-box">
+            <h3 className="recap-title">{lesson.courseTitle}</h3>
+            <hr className="recap-divider" />
+            <p className="recap-lessons-title">Leçons</p>
+            <ul className="recap-lessons-list">
+              {courses
+                .filter((c) => c.courseId === courseId && c.type === "lesson")
+                .map((courseLesson) => (
+                  <li
+                    key={courseLesson.id}
+                    className={`recap-lesson-item ${courseLesson.id === lessonId ? 'active' : ''}`}
+                  >
+                    <Link to={`/catalog/courses/${courseId}/lesson/${courseLesson.id}`}>
+                      {courseLesson.title}
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+
+              {/* Progress Bar */}
+  <p className="recap-progress-title">Progression</p>
+  <div className="recap-progress-bar">
+    <div
+      className="recap-progress-bar-fill"
+      style={{
+        width: `${((courses.filter((c) => c.courseId === courseId && c.type === "lesson")
+          .findIndex((c) => c.id === lessonId) + 1) / 
+          courses.filter((c) => c.courseId === courseId && c.type === "lesson").length) * 100}%`
+      }}
+    ></div>
+  </div>
+          </div>
         </div>
+
         <Footer />
       </div>
-      
+
     </div>
   );
 }
