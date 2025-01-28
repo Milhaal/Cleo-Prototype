@@ -31,7 +31,7 @@ function CourseCard({ item }) {
               {isCourse ? item.difficulty : item.courseDifficulty}
             </div>
             <div className={`course-trial ${displayTrialLabel ? '' : 'catalog-trial'}`}>  
-              {displayTrialLabel ? "Essai" : ""}
+              {displayTrialLabel ? "Populaire" : ""}
             </div>
           </div>
           

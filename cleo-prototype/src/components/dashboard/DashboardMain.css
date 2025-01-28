@@ -273,17 +273,17 @@
     /* 150% */
 }
 .dashboard-card-red-border {
-    border: 1.5px solid var(--red);
+    border: 1.5px solid var(--blue);
 
 }
 .dashboard-card-stat-red {
-    color: var(--red);
+    color: var(--blue);
 }
 .dashboard-card-description-red {
-    color: var(--red);
+    color: var(--blue);
 }
 .dashboard-card-infos-evolve-img-box-red {
-    background-color: var(--red-10);
+    background-color: var(--blue-10);
 }
 
 .dashboard-card-beast-learners-item-infos-box {
@@ -306,5 +306,5 @@ height: 14px;
     width: 46px;
     height: 14px;
     border-radius: 4px;
-    background-color: var(--red);
+    background-color: var(--blue);
 }

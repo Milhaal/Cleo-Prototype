@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import courses from "../../data/courses/index-courses";
 import toolImages from "../../data/ToolsData";
@@ -6,6 +6,7 @@ import "./LessonPage.css";
 import "../Root.css";
 import Footer from "../Footer";
 import LessonQuiz from "./LessonQuiz";
+import { useNavigate } from "react-router-dom";
 
 function LessonPage() {
   const { courseId, lessonId } = useParams();
@@ -14,10 +15,37 @@ function LessonPage() {
   const lesson = courses.find(
     (c) => c.type === "lesson" && c.courseId === courseId && c.id === lessonId
   );
+  const lessonIndex = courses.findIndex(
+    (c) => c.type === "lesson" && c.courseId === courseId && c.id === lessonId
+  );
 
+  const nextLesson =
+    lessonIndex !== -1 && lessonIndex + 1 < courses.length && courses[lessonIndex + 1].courseId === courseId
+      ? courses[lessonIndex + 1]
+      : null;
+
+  // Fonction de navigation
+  const handleNextLesson = () => {
+    if (nextLesson) {
+      navigate(`/catalog/courses/${nextLesson.courseId}/lesson/${nextLesson.id}`);
+    } else {
+      navigate(`/catalog/courses/${courseId}`);
+    }
+  };
   const [quizCompleted, setQuizCompleted] = useState(false);
 
-  if (!lesson) {
+  const [currentLesson, setCurrentLesson] = useState(null);
+
+  useEffect(() => {
+    const lesson = courses.find(
+      (c) => c.type === "lesson" && c.courseId === courseId && c.id === lessonId
+    );
+    setCurrentLesson(lesson);
+  }, [courseId, lessonId]);
+
+  const navigate = useNavigate();
+
+  if (!currentLesson) {
     return <h2>Leçon introuvable</h2>;
   }
 
@@ -121,8 +149,8 @@ function LessonPage() {
                   return <img key={item.id} src={item.url} alt={item.alt} className="lesson-image" />;
                 case "video":
                   return (
-                    <video key={item.id} controls className="lesson-video">
-                      <source src={item.url} type="video/mp4" />
+                    <video key={currentLesson.id} controls className="lesson-video">
+                      <source src={currentLesson.content.find(item => item.type === "video").url} type="video/mp4" />
                       Votre navigateur ne supporte pas la lecture de vidéos.
                     </video>
                   );
@@ -130,8 +158,23 @@ function LessonPage() {
                   return null;
               }
             })}
-            <LessonQuiz questions={lesson.quiz} onQuizComplete={setQuizCompleted} />
+            {lesson.quiz && lesson.quiz.length > 0 && (
+              <LessonQuiz
+                questions={lesson.quiz}
+                onQuizComplete={setQuizCompleted}
+                nextLessonId={nextLesson?.id || null}
+                courseId={courseId}
+              />
+            )}
 
+            <div className="lesson-content-bottom">
+              <div className="lesson-navigation">
+                <button onClick={handleNextLesson} className="lesson-next-btn">
+                  {nextLesson ? "Leçon suivante" : "Terminer le cours"}
+                  <span className="material-symbols-outlined">arrow_right_alt</span>
+                </button>
+              </div>
+            </div>
           </div>
 
           <div className="lesson-content-recap-box">
@@ -153,18 +196,18 @@ function LessonPage() {
                 ))}
             </ul>
 
-              {/* Progress Bar */}
-  <p className="recap-progress-title">Progression</p>
-  <div className="recap-progress-bar">
-    <div
-      className="recap-progress-bar-fill"
-      style={{
-        width: `${((courses.filter((c) => c.courseId === courseId && c.type === "lesson")
-          .findIndex((c) => c.id === lessonId) + 1) / 
-          courses.filter((c) => c.courseId === courseId && c.type === "lesson").length) * 100}%`
-      }}
-    ></div>
-  </div>
+            {/* Progress Bar */}
+            <p className="recap-progress-title">Progression</p>
+            <div className="recap-progress-bar">
+              <div
+                className="recap-progress-bar-fill"
+                style={{
+                  width: `${((courses.filter((c) => c.courseId === courseId && c.type === "lesson")
+                    .findIndex((c) => c.id === lessonId) + 1) /
+                    courses.filter((c) => c.courseId === courseId && c.type === "lesson").length) * 100}%`
+                }}
+              ></div>
+            </div>
           </div>
         </div>
 

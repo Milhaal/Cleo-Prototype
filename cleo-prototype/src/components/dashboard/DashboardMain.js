@@ -21,7 +21,7 @@ function DashboardMain() {
                 <img className="dashboard-card-best-learner-box-img" src="./images/pauline-pp.png"></img>
                 <div className="dashboard-card-best-learner-box-wrap">
                   <p className="dashboard-card-best-learner-box-name">Pauline Mila-Alonso</p>
-                  <p className="dashboard-card-description"><span className=" dashboard-card-description-green">15 cours</span> en 1 mois</p>
+                  <p className="dashboard-card-description"><span className=" dashboard-card-description-green">45 cours</span> en 1 mois</p>
 
                 </div>
               </div>
@@ -31,28 +31,28 @@ function DashboardMain() {
                     <img className="dashboard-card-beast-learners-item-img" src="./images/alexandre-pp.png"></img>
                     <p className="dashboard-card-beast-learners-item-name">Alexandre Bloch</p>
                   </div>
-                  <p className="dashboard-card-beast-learners-item-infos">10 cours</p>
+                  <p className="dashboard-card-beast-learners-item-infos">30 cours</p>
                 </div>
                 <div className="dashboard-card-beast-learners-item">
                   <div className="dashboard-card-beast-learners-item-box">
                     <img className="dashboard-card-beast-learners-item-img" src="./images/anaelle-pp.png"></img>
                     <p className="dashboard-card-beast-learners-item-name">Anaelle Guez</p>
                   </div>
-                  <p className="dashboard-card-beast-learners-item-infos">8 cours</p>
+                  <p className="dashboard-card-beast-learners-item-infos">18 cours</p>
                 </div>
                 <div className="dashboard-card-beast-learners-item">
                   <div className="dashboard-card-beast-learners-item-box">
                     <img className="dashboard-card-beast-learners-item-img" src="./images/aron-pp.png"></img>
                     <p className="dashboard-card-beast-learners-item-name">Aron Elbase</p>
                   </div>
-                  <p className="dashboard-card-beast-learners-item-infos">5 cours</p>
+                  <p className="dashboard-card-beast-learners-item-infos">15 cours</p>
                 </div>
                 <div className="dashboard-card-beast-learners-item">
                   <div className="dashboard-card-beast-learners-item-box">
                     <img className="dashboard-card-beast-learners-item-img" src="./images/naomie-pp.png"></img>
                     <p className="dashboard-card-beast-learners-item-name">Naomie Halioua</p>
                   </div>
-                  <p className="dashboard-card-beast-learners-item-infos">4 cours</p>
+                  <p className="dashboard-card-beast-learners-item-infos">14 cours</p>
                 </div>
 
               </div>
@@ -63,7 +63,7 @@ function DashboardMain() {
               <p className="dashboard-card-title">Feedback des employés</p>
               <div className="dashboard-card-infos-box">
                 <div className="dashboard-card-stat-box">
-                  <p className="dashboard-card-stat dashboard-card-stat-green">4.7</p>
+                  <p className="dashboard-card-stat dashboard-card-stat-green">4.9</p>
                   <img className="dashboard-card-stat-icon" src="./images/green-star-icon.png"></img>
                 </div>
                 <div className="dashboard-card-infos-evolve-box">
@@ -84,7 +84,7 @@ function DashboardMain() {
               <p className="dashboard-card-title">Taux d’achèvement</p>
               <div className="dashboard-card-infos-box">
                 <div className="dashboard-card-stat-box">
-                  <p className="dashboard-card-stat dashboard-card-stat-green">67%</p>
+                  <p className="dashboard-card-stat dashboard-card-stat-green">95%</p>
                 </div>
                 <div className="dashboard-card-infos-evolve-box">
                   <div className="dashboard-card-infos-evolve-img-box">
@@ -104,7 +104,7 @@ function DashboardMain() {
               <p className="dashboard-card-title">Moyenne des cours</p>
               <div className="dashboard-card-infos-box">
                 <div className="dashboard-card-stat-box">
-                  <p className="dashboard-card-stat dashboard-card-stat-orange">1.4</p>
+                  <p className="dashboard-card-stat dashboard-card-stat-orange">9.4</p>
                 </div>
 
               </div>
@@ -120,9 +120,9 @@ function DashboardMain() {
               <p className="dashboard-card-title">Abandons</p>
               <div className="dashboard-card-infos-box">
                 <div className="dashboard-card-stat-box">
-                  <p className="dashboard-card-stat dashboard-card-stat-red">1</p>
+                  <p className="dashboard-card-stat dashboard-card-stat-red">0</p>
                 </div>
-                <div className="dashboard-card-infos-evolve-box">
+                {/* <div className="dashboard-card-infos-evolve-box">
                   <div className="dashboard-card-infos-evolve-img-box dashboard-card-infos-evolve-img-box-red">
                     <img className="dashboard-card-infos-evolve-img" src="./images/up-red-icon.png"></img>
                   </div>
@@ -132,14 +132,14 @@ function DashboardMain() {
                     </div>
                     <p>récemment</p>
                   </div>
-                </div>
+                </div> */}
               </div>
               <p className="dashboard-card-description">employés inactifs <span className="dashboard-card-description-grey-box">récemment</span></p>
               <div className="dashboard-card-border-box">
                 <img className="dashboard-card-border-box-img" src="./images/info-icon.png"></img>
                 <p className="dashboard-card-border-box-text">Un employé inactif est une personne qui est restée sans activité pendant au moins 2 semaines.</p>
               </div>
-              <div className="dashboard-card-grey-box">
+              {/* <div className="dashboard-card-grey-box">
                 <div className="dashboard-card-beast-learners-item">
                   <div className="dashboard-card-beast-learners-item-box">
                     <img className="dashboard-card-beast-learners-item-img" src="./images/arthur-pp.png"></img>
@@ -153,13 +153,13 @@ function DashboardMain() {
                 </div>
 
 
-              </div>
+              </div> */}
             </div>
             <div className="dashboard-card dashboard-card-green-border">
               <p className="dashboard-card-title">Taux d’abandon</p>
               <div className="dashboard-card-infos-box">
                 <div className="dashboard-card-stat-box">
-                  <p className="dashboard-card-stat dashboard-card-stat-green">7%</p>
+                  <p className="dashboard-card-stat dashboard-card-stat-green">3%</p>
                 </div>
                 <div className="dashboard-card-infos-evolve-box">
                   <div className="dashboard-card-infos-evolve-img-box">

@@ -1,9 +1,10 @@
 const lesson1 = {
   id: "lesson1",
   status: "Terminé",
+  role: "RH",
   title: "Questions métier ciblées en entretien grâce à l’IA",
   description: "Apprenez à utiliser l’IA pour concevoir des questions d’entretien ciblées, adaptées aux compétences spécifiques des candidats et aux besoins de chaque poste.",
-  videoUrl: "https://www.example.com/job-offer-video.mp4",
+  // videoUrl: "https://www.example.com/job-offer-video.mp4",
   content: [
     {
       id: "link-course",
@@ -31,11 +32,11 @@ const lesson1 = {
         "La nécessité d’éviter des biais dans les évaluations"
       ]
     },
-    {
-      id: "video1",
-      type: "video",
-      url: "https://www.example.com/job-offer-video.mp4"
-    },
+    // {
+    //   id: "video1",
+    //   type: "video",
+    //   url: "https://www.example.com/job-offer-video.mp4"
+    // },
     {
       id: "text3",
       type: "text",
@@ -181,26 +182,48 @@ const lesson1 = {
   ],
   quiz: [
     {
-      question: "Quel est le format recommandé pour une offre d’emploi efficace ?",
+      question: "Quel est le principal avantage de l’utilisation de l’IA pour générer des questions d’entretien ciblées ?",
       options: [
-        "Introduction, missions principales, compétences, avantages.",
-        "Missions principales, contraintes, conclusion, ton.",
-        "Introduction, résultats attendus, contraintes, rémunération.",
-        "Contexte, ton, rémunération, conclusion."
+        "Elle remplace complètement les recruteurs dans le processus de sélection.",
+        "Elle réduit la charge de travail des recruteurs tout en améliorant la pertinence des questions.",
+        "Elle garantit automatiquement des embauches réussies sans intervention humaine.",
+        "Elle permet d’éviter complètement la validation des questions par les managers."
       ],
-      correct: "Introduction, missions principales, compétences, avantages.",
-      explanation: "L'introduction engageante attire l'attention, les missions décrivent les responsabilités et les compétences montrent les attentes."
+      correct: "Elle réduit la charge de travail des recruteurs tout en améliorant la pertinence des questions.",
+      explanation: "L’IA permet d’automatiser la création de questions pertinentes en se basant sur les compétences recherchées, ce qui fait gagner du temps aux recruteurs tout en garantissant des évaluations plus précises. Cependant, elle ne remplace pas le jugement humain et nécessite une validation des parties prenantes."
     },
     {
-      question: "Quel est l'objectif principal d'un entretien structuré ?",
+      question: "Quelle est une erreur courante à éviter lors de l’utilisation de l’IA pour créer des questions d’entretien ?",
       options: [
-        "Tester les compétences du candidat",
-        "Définir un processus de recrutement",
-        "Évaluer l'adéquation culturelle",
-        "Éviter les biais inconscients"
+        "Personnaliser chaque question en fonction du poste.",
+        "Ne pas inclure le manager dans la validation des questions.",
+        "Utiliser des prompts spécifiques pour générer les questions.",
+        "Ajouter des scénarios pour évaluer les compétences comportementales."
       ],
-      correct: "Éviter les biais inconscients",
-      explanation: "Un entretien structuré réduit les biais en évaluant chaque candidat de manière équitable."
+      correct: "Ne pas inclure le manager dans la validation des questions.",
+      explanation: "L’implication du manager est essentielle pour s’assurer que les questions sont alignées sur les attentes du poste et éviter des malentendus ou des critères d’évaluation mal définis."
+    },
+    {
+      question: "Quelle est la première étape clé pour utiliser l’IA dans la création de questions d’entretien ?",
+      options: [
+        "Valider et partager les questions avec les parties prenantes.",
+        "Préparer un prompt adapté à l’outil d’IA utilisé.",
+        "Identifier les besoins spécifiques du poste avec le manager.",
+        "Ajouter des scénarios pour rendre les questions plus pertinentes"
+      ],
+      correct: "Identifier les besoins spécifiques du poste avec le manager.",
+      explanation: "Avant d’utiliser l’IA, il est crucial de bien comprendre les compétences techniques et comportementales requises pour le poste afin de formuler des questions adaptées et ciblées."
+    },
+    {
+      question: "Comment optimiser les résultats obtenus à partir d’un outil d’IA comme Copilot pour générer des questions d’entretien ?",
+      options: [
+        "Utiliser un prompt clair et précis décrivant les compétences recherchées.",
+        "Accepter toutes les questions générées sans modification.",
+        "Se concentrer uniquement sur les questions comportementales.",
+        "Générer un grand nombre de questions génériques et choisir au hasard."
+      ],
+      correct: "Utiliser un prompt clair et précis décrivant les compétences recherchées.",
+      explanation: "Un prompt bien formulé est essentiel pour obtenir des questions pertinentes et adaptées au poste, en mettant l’accent sur les compétences spécifiques recherchées, tant techniques que comportementales."
     }
   ]
 };

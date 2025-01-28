@@ -76,6 +76,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 15px;
+    cursor: pointer;
 
 }
 
@@ -192,3 +193,11 @@
     line-height: 20px;
     /* 143.982% */
 }
+
+
+  
+  .memberspace-content-column-item-progressbar-fill {
+    height: 100%;
+    background-color: var(--dark-green);
+    transition: width 0.5s ease-in-out;
+  }

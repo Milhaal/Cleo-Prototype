@@ -2,11 +2,12 @@ import experts from "../../ExpertData";
 
 const courseInfo = {
   id: "course1",
+  trial: true,
   title: "Améliorez vos process de recrutement avec Copilot",
   difficulty: "Débutant",
   tools: ["Copilot"],
   role: "RH",
-  authorId: "lisa_t",  // Utilisation de l'ID de l'expert au lieu des détails
+  authorId: "lisa_t", 
   description: "Apprenez à utiliser l’IA pour automatiser et améliorer vos processus de recrutement efficacement.",
   about: "L’IA transforme le secteur des ressources humaines en offrant des solutions innovantes pour automatiser et améliorer des tâches clés du recrutement. Ce cours explore l’utilisation de l’IA dans la rédaction d’emails professionnels, l’analyse des comptes rendus d’entretien et la création de questions ciblées pour des rôles spécifiques. En adoptant ces technologies, les équipes RH peuvent réduire le temps consacré aux tâches administratives, améliorer la qualité des interactions avec les candidats et garantir des processus plus fluides et efficaces.",
   skills:

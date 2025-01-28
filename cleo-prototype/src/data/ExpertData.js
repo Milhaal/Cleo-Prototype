@@ -7,20 +7,25 @@ const experts = [
       companyLogo: "/images/ubisoft-logo-black.png",
     },
     {
-      id: "alex_d",
-      name: "Alex D.",
-      position: "Data Scientist",
-      photo: "/images/alex_d.jpg",
-      companyLogo: "/images/microsoft_logo.png",
-      bio: "Spécialiste en machine learning et en analyse de données.",
+      id: "naomie_h",
+      name: "Naomie H.",
+      position: "CTO",
+      photo: "/images/naomie-pp.png",
+      companyLogo: "/images/logo-cleo.png",
     },
     {
-      id: "sophie_l",
-      name: "Sophie L.",
-      position: "Blockchain Consultant",
-      photo: "/images/sophie_l.jpg",
-      companyLogo: "/images/ibm_logo.png",
-      bio: "Experte en implémentation de solutions blockchain pour les entreprises.",
+      id: "xavier_h",
+      name: "Xavier H.",
+      position: "Expert IA & Éthique",
+      photo: "/images/xavier-pp.png",
+      companyLogo: "/images/allianz-logo.png",
+    },
+    {
+      id: "anne_g",
+      name: "Anne G.",
+      position: "Experte IA & RSE",
+      photo: "/images/anne-pp.png",
+      companyLogo: "/images/disney-logo.png",
     }
   ];
   

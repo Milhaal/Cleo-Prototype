@@ -10,7 +10,7 @@
     font-family: var(--inter);
     display: flex;
     flex-direction: column;
-    height: 100%;
+    align-self: stretch;
     justify-content: space-between;
     width: 32%;
 }

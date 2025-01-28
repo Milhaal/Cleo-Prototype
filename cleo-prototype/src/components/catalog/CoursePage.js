@@ -32,6 +32,8 @@ function CoursePage() {
   };
 
   const lessons = courses.filter(item => item.courseId === courseId && item.type === "lesson");
+  const syllabus = courses.filter(item => item.courseId === courseId && item.type === "syllabus");
+  console.log("eheh c'est moi ca, syllabus : "+syllabus);
 
   if (!course) {
     return <h2>Cours introuvable</h2>;

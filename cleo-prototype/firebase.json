@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "cleo-academy",
     "public": "build",
     "ignore": [
       "firebase.json",

@@ -12,12 +12,13 @@
     gap: 25px;
     border-right: 1px solid var(--light-grey);
     padding: 12px 10px;
-    z-index: 10;
+    z-index: 100000;
+    transition: width 0.3s ease;
 }
 
 .leftbar_logo {
     width: 48px;
-    height: 20.997px;
+    height: auto;
     flex-shrink: 0;
 }
 
@@ -127,4 +128,69 @@
 
 .leftbar_links_box-item-active {
     background-color: var(--light-grey);
+}
+
+.leftbar_wrapper.collapsed {
+    width: 60px;
+}
+
+/* Gestion des textes et éléments cachés lors de la rétraction */
+.leftbar_wrapper.collapsed .leftbar_profile_link-infos,
+.leftbar_wrapper.collapsed .leftbar_links_box-title {
+    display: none;
+}
+
+.leftbar_wrapper.collapsed .leftbar_links_box-item {
+    justify-content: center;
+}
+
+.leftbar_wrapper.collapsed .leftbar_links_box-item img {
+    margin-right: 0;
+}
+.leftbar_wrapper.collapsed {
+    width: 60px;
+}
+
+/* Gestion des textes et éléments cachés lors de la rétraction */
+.leftbar_wrapper.collapsed .leftbar_profile_link-infos,
+.leftbar_wrapper.collapsed .leftbar_links_box-title {
+    display: none;
+}
+
+.leftbar_wrapper.collapsed .leftbar_links_box-item {
+    justify-content: center;
+}
+
+.leftbar_wrapper.collapsed .leftbar_links_box-item img {
+    margin-right: 0;
+}
+
+
+/* Bouton de rétractation */
+.leftbar_toggle {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 3px;
+    background-color: var(--white);
+    z-index: 1000000;
+
+}
+.toggle-icon  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.toggle-icon span {
+    transition: transform 0.3s ease;
+    color: var(--grey);
+    font-size: 16px;
+}
+
+.toggle-icon.rotate {
+    transform: rotate(180deg);
+    padding-left: 3px;
 }

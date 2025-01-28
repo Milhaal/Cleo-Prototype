@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import "../Root.css";
 import courses from "../../data/courses/index-courses";
 import CourseCard from "./CourseCard";
@@ -17,7 +18,7 @@ const roleMappings = {
   IT: "Informatique (IT)",
   Production: "Production",
   Achats: "Achats",
-  Stratégie: "Stratégie / Direction Générale",
+  Stratégie: "Stratégie / DG",
   "R&D": "R&D",
   ServiceClient: "Service Client",
   RSE: "RSE",
@@ -25,6 +26,19 @@ const roleMappings = {
 
 function CatalogMain() {
   const navigate = useNavigate();
+
+  const [shuffledCourses, setShuffledCourses] = useState([]);
+
+  const shuffleArray = (array) => {
+    return array
+      .map((item) => ({ ...item, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ sort, ...rest }) => rest);
+  };
+
+  useEffect(() => {
+    setShuffledCourses(shuffleArray(courses));
+  }, []);
 
   // États pour gérer les filtres sélectionnés
   const [selectedFilters, setSelectedFilters] = useState([]);
@@ -46,10 +60,10 @@ function CatalogMain() {
     });
   };
 
-  
+
   // Liste des outils populaires avec les cours associés
   const popularTools = [
-    { key: "ChatGPT", courseId: "course2" },
+    { key: "ChatGPT", courseId: "course3" },
     { key: "Copilot", courseId: "" },
     { key: "Gemini", courseId: "" },
     { key: "MistralAI", courseId: "" },
@@ -78,8 +92,19 @@ function CatalogMain() {
     }));
   };
 
-  // Extraire les rôles uniques des cours
-  const roleOptions = [...new Set(courses.map((course) => course.courseRole).filter(Boolean))].map((role) => ({
+  const roleOptions = [
+    ...new Set(
+      courses.flatMap((course) => {
+        // Extraire les rôles des cours et des leçons
+        const courseRole = course.courseRole;
+        const lessonRoles = course.type === "course" && course.lessons
+          ? course.lessons.map((lesson) => lesson.role || courseRole)
+          : [];
+
+        return [courseRole, ...lessonRoles].filter(Boolean);
+      })
+    ),
+  ].map((role) => ({
     value: role,
     label: roleMappings[role] || role,
   }));
@@ -90,38 +115,48 @@ function CatalogMain() {
     label: toolImages[tool]?.name || tool,
     image: toolImages[tool]?.image || "/images/default-tool.png",
   }));
-  const trialMatch =
-  selectedFilters.some((filter) => filter.type === "trial")
-    ? courses.filter((course) => course.trial === true)
-    : courses;
 
-const filteredItems = trialMatch.filter((item) => {
-  const difficultyMatch =
-    selectedFilters.filter((filter) => filter.type === "difficulty").length === 0 ||
-    selectedFilters.some(
-      (filter) =>
-        (filter.type === "difficulty" && filter.value === item.difficulty) ||
-        (filter.type === "difficulty" && filter.value === item.courseDifficulty)
-    );
+const trialMatch = selectedFilters.some((filter) => filter.type === "trial")
+  ? shuffledCourses.filter((course) =>
+      course.courseTrial === true ||
+      (course.type === "lesson" && shuffledCourses.find(c => c.id === course.courseId)?.courseTrial === true)
+    )
+  : shuffledCourses;
 
-  const roleMatch =
-    selectedFilters.filter((filter) => filter.type === "role").length === 0 ||
-    selectedFilters.some(
-      (filter) =>
-        (filter.type === "role" && filter.value === item.role) ||
-        (filter.type === "role" && filter.value === item.courseRole)
-    );
+  const filteredItems = trialMatch.filter((item) => {
+    const difficultyMatch =
+      selectedFilters.filter((filter) => filter.type === "difficulty").length === 0 ||
+      selectedFilters.some(
+        (filter) =>
+          (filter.type === "difficulty" && filter.value === item.difficulty) ||
+          (filter.type === "difficulty" && filter.value === item.courseDifficulty)
+      );
 
-  const toolMatch =
-    selectedFilters.filter((filter) => filter.type === "tool").length === 0 ||
-    selectedFilters.some(
-      (filter) =>
-        (filter.type === "tool" && item.tools?.includes(filter.value)) ||
-        (filter.type === "tool" && item.courseTools?.includes(filter.value))
-    );
+    const getRole = (item) => item.role || item.courseRole;
 
-  return difficultyMatch && roleMatch && toolMatch;
-});
+    const roleMatch =
+      selectedFilters.filter((filter) => filter.type === "role").length === 0 ||
+      selectedFilters.some(
+        (filter) => filter.type === "role" && filter.value === getRole(item)
+      );
+
+    const toolMatch =
+      selectedFilters.filter((filter) => filter.type === "tool").length === 0 ||
+      selectedFilters.some(
+        (filter) =>
+          (filter.type === "tool" && item.tools?.includes(filter.value)) ||
+          (filter.type === "tool" && item.courseTools?.includes(filter.value))
+      );
+
+    return difficultyMatch && roleMatch && toolMatch;
+
+  });
+
+
+  console.log("Courses data:", courses);
+
+
+  
   return (
     <div className="page_wrapper">
       <div className="page_topbar">
@@ -129,8 +164,8 @@ const filteredItems = trialMatch.filter((item) => {
       </div>
 
       <div className="catalog-wrapper">
-              {/* Section Cours Populaires */}
-              <div className="catalog-popular">
+        {/* Section Cours Populaires */}
+        <div className="catalog-popular">
           <h2 className="catalog-title">Cours populaires</h2>
           <div className="catalog-popular-box">
             {popularTools.map((tool, index) => {
@@ -170,16 +205,16 @@ const filteredItems = trialMatch.filter((item) => {
                 Affichage de {courses.length} cours
               </p>
               <div className="catalog-content-filters-switch-box">
-  <label className="catalog-switch">
-    <input
-      type="checkbox"
-      checked={selectedFilters.some((filter) => filter.type === "trial")}
-      onChange={() => handleFilterChange("Essai", "trial")}
-    />
-    <span className="catalog-switch-slider"></span>
-  </label>
-  <p className="catalog-content-filters-switch-box-text">Essai</p>
-</div>
+                <label className="catalog-switch">
+                  <input
+                    type="checkbox"
+                    checked={selectedFilters.some((filter) => filter.type === "trial")}
+                    onChange={() => handleFilterChange("Populaire", "trial")}
+                  />
+                  <span className="catalog-switch-slider"></span>
+                </label>
+                <p className="catalog-content-filters-switch-box-text">Populaire</p>
+              </div>
               <div className="catalog-content-filters-content">
                 {/* Filtres de difficulté */}
                 <div className="catalog-content-filters-dropdown-box">
@@ -286,19 +321,19 @@ const filteredItems = trialMatch.filter((item) => {
             </div>
 
             <div className="catalog-content-main">
-            <div className="catalog-content-main-filters-selected">
-  {selectedFilters.map((filter, index) => (
-    <span key={index} className="catalog-content-main-filter-tag">
-      {filter.value}
-      <span
-        className="material-symbols-outlined catalog-content-main-remove-filter"
-        onClick={() => removeFilter(filter.value)}
-      >
-        close
-      </span>
-    </span>
-  ))}
-</div>
+              <div className="catalog-content-main-filters-selected">
+                {selectedFilters.map((filter, index) => (
+                  <span key={index} className="catalog-content-main-filter-tag">
+                    {filter.value}
+                    <span
+                      className="material-symbols-outlined catalog-content-main-remove-filter"
+                      onClick={() => removeFilter(filter.value)}
+                    >
+                      close
+                    </span>
+                  </span>
+                ))}
+              </div>
               <div className="catalog-content-list">
                 {filteredItems.map((item) => (
                   <CourseCard key={item.id} item={item} />
