@@ -22,7 +22,7 @@ const lesson1 = {
     {
       id: "text1",
       type: "text",
-      value: "Xavier H. est un expert reconnu en Big Data et Intelligence Artificielle, ayant occupé divers postes à responsabilités dans le domaine. Aujourd'hui, il est Director of Wealth Management France chez Carmignac, où il travaille sur des problématiques mêlant finance et nouvelles technologies. Son expertise en éthique de l’IA lui permet d’accompagner les entreprises dans la mise en place de solutions responsables et durables."
+      value: "Xavier H. est un expert reconnu en Big Data et Intelligence Artificielle, ayant occupé divers postes à responsabilités dans le domaine."
     },
     {
       id: "subtitle1",
