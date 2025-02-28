@@ -1,16 +1,26 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import "./LeftBar.css";
 import "./Root.css";
 
 function LeftBar() {
+  const location = useLocation(); // ➤ Récupère la route actuelle
   const [isCollapsed, setIsCollapsed] = useState(false);
+
+  // ➤ Effet pour replier LeftBar seulement sur /new-course
+  useEffect(() => {
+    if (location.pathname === "/new-course") {
+      setIsCollapsed(true);
+    } else {
+      setIsCollapsed(false);
+    }
+  }, [location.pathname]); // ➤ Se déclenche à chaque changement de route
 
   return (
     <div className={`leftbar_wrapper ${isCollapsed ? "collapsed" : ""}`}>
       <div className="leftbar_toggle" onClick={() => setIsCollapsed(!isCollapsed)}>
         <div className={`toggle-icon ${isCollapsed ? "rotate" : ""}`}>
-          <span class="material-symbols-outlined ">
+          <span className="material-symbols-outlined">
             arrow_back_ios
           </span>
         </div>
@@ -55,6 +65,10 @@ function LeftBar() {
           <NavLink to="/memberspace" className={({ isActive }) => isActive ? "leftbar_links_box-item leftbar_links_box-item-active" : "leftbar_links_box-item"}>
             <img className="leftbar_links_box-item-icon" src="/images/member-icon.png" alt="Member Icon" />
             {!isCollapsed && "Mon espace"}
+          </NavLink>
+          <NavLink to="/new-course" className={({ isActive }) => isActive ? "leftbar_links_box-item leftbar_links_box-item-active" : "leftbar_links_box-item"}>
+            <img className="leftbar_links_box-item-icon" src="/images/new-course-icon.png" alt="New Course Icon" />
+            {!isCollapsed && "New Course"}
           </NavLink>
         </div>
       </div>

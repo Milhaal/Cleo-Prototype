@@ -52,6 +52,10 @@ img {
   height: auto;
 }
 
+p {
+  margin: 0;
+}
+
 /*==================== PAGE ====================*/
 
 .page_wrapper {
@@ -160,6 +164,10 @@ img {
 .course-page-header-top-labels-content-img {
   width: 25px;
   height: auto;
+}
+.page_topbar-icon {
+  color: #94A3B8;
+  font-size: 15px;
 }
 
 /*==================== MEMBER ====================*/

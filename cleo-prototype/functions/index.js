@@ -59,7 +59,7 @@ app.post("/improvePrompt", async (req, res) => {
         const improvedPromptRequest = {
             messages: [
                 { role: "system", content: "Tu es un expert en rédaction de prompts." },
-                { role: "user", content: `Améliore ce prompt pour qu'il soit plus clair et précis : "${req.body.prompt}".` }
+                { role: "user", content: `Améliore ce prompt pour qu'il soit plus clair et précis : "${req.body.prompt}". Donne moi uniquement le prompt amélioré sans guillemets.` }
             ]
         };
 

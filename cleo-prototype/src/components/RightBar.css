@@ -1,0 +1,282 @@
+.rightbar-wrapper {
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    display: flex;
+    padding: 25px 15px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 35px;
+    flex-shrink: 0;
+    border: 1px solid #F2F2F2;
+    background: #FFF;
+    font-family: var(--inter);
+}
+
+/* 🟦 SECTION COURS */
+.course-section {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.course-infos-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.course-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #212936;
+}
+
+.course-meta {
+    display: flex;
+    gap: 15px;
+}
+
+.course-meta-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.course-meta-box-title {
+    color: var(--grey);
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    /* 150% */
+}
+
+.course-tag {
+    display: flex;
+    height: 25px;
+    padding: 0.592px 8.877px;
+    justify-content: center;
+    align-items: center;
+    gap: 3.551px;
+    border-radius: 5.918px;
+    border: 0.592px solid #E2E8F0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.60) 100%), #FFF;
+    box-shadow: 0px 0px 0px 1.184px #F8FAFC inset, 0px 1.184px 2.367px -0.592px rgba(2, 6, 23, 0.05);
+    color: var(--grey);
+    text-align: center;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 14.204px;
+    /* 142.038% */
+}
+
+.course-tool-logo {
+    width: 18px;
+    height: 18px;
+}
+
+
+
+/* 🟦 BARRE DE PROGRESSION */
+.course-progress-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.course-progress-label {
+    color: var(--grey);
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+.course-progress-step.completed {
+    background: var(--blue);
+}
+
+.course-progress-bar {
+    display: flex;
+    gap: 4px;
+    height: 6px;
+    width: 100%;
+}
+
+.course-progress-step {
+    flex: 1;
+    background: var(--light-grey);
+    border-radius: 5px;
+    transition: width 0.3s ease-in-out;
+}
+
+/* 🟦 LISTE DES CHAPITRES */
+.course-chapters {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.chapter-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+    width: 100%;
+    cursor: pointer;
+}
+
+.chapter-item-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chapter-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #D1D5DB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #D1D5DB;
+}
+
+.chapter-item.completed .chapter-circle {
+    border-color: #0008CF;
+    color: #0008CF;
+}
+
+.chapter-title {
+    font-size: 14px;
+    color: var(--grey);
+    flex: 1;
+    font-weight: 400;
+}
+
+
+
+/* 🟦 Icône flèche */
+.chapter-icon {
+    font-size: 14px;
+    color: #D1D5DB;
+}
+
+
+/* Carte de l'expert */
+.expert-card {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10.61px;
+    align-self: stretch;
+    border-radius: 10px;
+    border: 0.707px solid #E2E8F0;
+    background: #F8FAFC;
+}
+
+.expert-card-title {
+    color: #212936;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.expert-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.expert-card-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.expert-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.expert-card-name {
+    color: #212936;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    /* 153.846% */
+    display: flex;
+    align-items: center;
+}
+
+.expert-card-company-logo {
+    width: auto;
+    height: 15px;
+    margin-left: 5px;
+}
+
+.expert-card-position {
+    color: #64748B;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 153.846% */
+}
+
+.expert-card-bio {
+    color: #334155;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%; /* 19.2px */
+}
+
+
+
+
+/* Cercle avec bordure partielle à 50% */
+.chapter-circle.half-completed {
+    position: relative;
+    color: var(--blue);
+    border: 2px solid var(--blue);
+    /* Supprime la bordure de base */
+}
+
+.chapter-circle.half-completed::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #D1D5DB;
+    /* Bordure bleue */
+    clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+    /* Affiche uniquement la moitié droite */
+}
