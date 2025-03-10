@@ -12,6 +12,7 @@ const IAComponent = () => {
     const [copied, setCopied] = useState(false);
     const [hasSentMessage, setHasSentMessage] = useState(false);
     const [showDetails, setShowDetails] = useState(false);
+    const API_BASE_URL = "https://us-central1-cleo-prototype.cloudfunctions.net/api";
 
     // Mots-clés et verbes d’action pour le scoring
     const actionVerbs = [
@@ -92,22 +93,34 @@ const IAComponent = () => {
 
         try {
             console.log("🔹 Envoi de la requête principale et amélioration...");
-            const response = await axios.post("https://callcopilot-x5mjnplfsa-uc.a.run.app/callCopilot", {
+            const response = await axios.post(`${API_BASE_URL}/callChatGPT`, {
                 prompt: `1️⃣ Réponds à ce prompt normalement : "${prompt}" \n
-                     2️⃣ Ensuite, améliore ce prompt pour qu'il soit plus clair et efficace en tant que prompt IA.`
+                         2️⃣ Ensuite, améliore ce prompt pour qu'il soit plus clair et efficace en tant que prompt IA.`
             });
 
+            console.log("✅ Réponse brute de l'API :", response.data);
+
+            if (!response.data || !response.data.choices || response.data.choices.length === 0) {
+                throw new Error("La réponse de l'API ne contient pas de choix valides.");
+            }
+
+            // Séparation de la réponse (réponse normale + prompt amélioré)
             const aiResponses = response.data.choices[0]?.message?.content || "Aucune réponse reçue.";
-            console.log("✅ Réponse API :", aiResponses);
+            console.log("✅ Réponse API traitée :", aiResponses);
 
-            // Séparation de la réponse en deux parties (Réponse + Prompt amélioré)
-            const [initialResponse, improvedText] = aiResponses.split("2️⃣ ");
-            setResult(initialResponse.trim());
-            setImprovedPrompt(improvedText?.trim() || "Aucune amélioration générée.");
+            // Séparer la réponse en deux parties
+            const responseParts = aiResponses.split("2️⃣ ");
+            const initialResponse = responseParts[0]?.trim() || "Aucune réponse générée.";
+            const improvedText = responseParts[1]?.trim() || "Aucune amélioration détectée.";
 
-            // Calcul du score basé sur le prompt initial
+            // Met à jour l'état avec la réponse
+            setResult(initialResponse);
+            setImprovedPrompt(improvedText);
+
+            // 🔍 Calcul du score basé sur le prompt initial
             const newScore = evaluatePrompt(prompt);
             setScore(newScore);
+            console.log("📊 Score calculé :", newScore);
 
         } catch (error) {
             console.error("❌ Erreur API :", error);
@@ -117,18 +130,11 @@ const IAComponent = () => {
 
         setLoading(false);
     };
-
-    const copyToClipboard = () => {
-        if (improvedPrompt) {
-            navigator.clipboard.writeText(improvedPrompt);
-            setCopied(true);
-
-            // Remettre à l'état initial après 2 secondes
-            setTimeout(() => {
-                setCopied(false);
-            }, 2000);
-        }
+    const handleImprovePrompt = () => {
+        setShowDetails(true); // ✅ On affiche les détails sans API
     };
+
+
 
     return (
         <div className="ia-container">
@@ -147,14 +153,12 @@ const IAComponent = () => {
 
                 </div>
                 {/* Score Box */}
-                <div className="ia-container-left-box">
-
-                    <div className="ia-container-left-title-box">
-                        <p className="ia-container-left-title">Score</p>
-
-                    </div>
-                    <div className="ia-container-left-content-box">
-                        {score && (
+                {result && score && (
+                    <div className="ia-container-left-box">
+                        <div className="ia-container-left-title-box">
+                            <p className="ia-container-left-title">Score</p>
+                        </div>
+                        <div className="ia-container-left-content-box">
                             <div className="score-section">
                                 <div className="score-circle-box">
                                     <div className="score-circle">
@@ -182,7 +186,6 @@ const IAComponent = () => {
                                         {score.total < 10 ? "Mauvais" : "Bon"}
                                     </p>
                                 </div>
-
 
                                 <div className="criteria">
                                     <div className="criteria-box">
@@ -222,56 +225,54 @@ const IAComponent = () => {
                                     </div>
                                 </div>
                             </div>
-                        )}
+                        </div>
                     </div>
-
-                </div>
+                )}
                 {/* Reco Box */}
-                {score && (
+                {result && score && (
                     <div className="ia-container-left-box">
                         <div className="ia-container-reco-title-box">
                             <div className="ia-container-reco-icon-box">
-                                <span class="material-symbols-outlined">
+                                <span className="material-symbols-outlined">
                                     close
                                 </span>
                             </div>
-
                         </div>
                         <div className="ia-container-reco-content-box">
                             <p className="ia-container-reco-content-title">Votre prompt n’est pas assez précis</p>
-                            <p className="ia-container-reco-content-text">Le prompt saisi “Écris une offre d’emploi pour un nouveau poste de Développeur Javascript” manque de détails essentiels. ChatGPT peut générer une offre d’emploi, mais sans informations spécifiques, le résultat risque d’être trop générique et ne pas refléter les besoins réels de l’entreprise.</p>
-                            {showDetails && (
-                                <div className="ia-container-reco-details">
-                                    <p className="ia-container-reco-content-title">Détails supplémentaires</p>
-                                    <p className="ia-container-reco-content-text">Ce prompt est trop vague. Il ne précise ni le contexte de l’entreprise, ni les missions exactes du poste, ni le profil recherché. Un développeur JavaScript peut travailler dans des contextes très variés : front-end, back-end, full-stack, sur différentes technologies ou frameworks (React, Node.js, Vue.js, etc.). Sans ces précisions, ChatGPT va proposer une annonce standardisée qui pourrait ne pas correspondre aux attentes du recruteur.</p>
-                                    <p className="ia-container-reco-content-title">Comment l’améliorer ?</p>
-                                    <p className="ia-container-reco-content-text">Pour obtenir une offre d’emploi plus pertinente, il est conseillé d’ajouter des détails sur :
-                                        <br></br>•	L’entreprise : Son secteur, sa taille, ses valeurs.
-                                        <br></br>•	Le poste : Missions principales, technologies utilisées, cadre de travail (télétravail, hybride, présentiel).
-                                        <br></br>•	Le profil recherché : Années d’expérience, compétences techniques et soft skills requises.
-                                        <br></br>•	Les avantages : Rémunération, perspectives d’évolution, avantages sociaux.
-                                    </p>
-                                </div>
-                            )}
+                            <p className="ia-container-reco-content-text">Le prompt saisi “{prompt}” manque de détails essentiels.</p>
+                            {/* ✅ Affichage conditionnel des détails */}
+            {showDetails && (
+                <div className="ia-container-reco-details">
+                    <p className="ia-container-reco-content-title">Détails supplémentaires</p>
+                    <p className="ia-container-reco-content-text">
+                        Ce prompt est trop vague. Il ne précise ni le contexte de l’entreprise, 
+                        ni les missions exactes du poste, ni le profil recherché. Un développeur 
+                        JavaScript peut travailler dans des contextes très variés : front-end, 
+                        back-end, full-stack, sur différentes technologies ou frameworks (React, 
+                        Node.js, Vue.js, etc.). Sans ces précisions, ChatGPT va proposer une 
+                        annonce standardisée qui pourrait ne pas correspondre aux attentes du 
+                        recruteur.
+                    </p>
+                    <p className="ia-container-reco-content-title">Comment l’améliorer ?</p>
+                    <p className="ia-container-reco-content-text">
+                        Pour obtenir une offre d’emploi plus pertinente, il est conseillé d’ajouter des détails sur :
+                        <br />• L’entreprise : Son secteur, sa taille, ses valeurs.
+                        <br />• Le poste : Missions principales, technologies utilisées, cadre de travail (télétravail, hybride, présentiel).
+                        <br />• Le profil recherché : Années d’expérience, compétences techniques et soft skills requises.
+                        <br />• Les avantages : Rémunération, perspectives d’évolution, avantages sociaux.
+                    </p>
+                </div>
+            )}
                             <div className="ia-container-reco-content-bot">
                                 {!showDetails && (
-                                    <div className="ia-container-reco-content-bot-left" onClick={() => setShowDetails(true)}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-stars ia-container-reco-content-bot-left-icon" viewBox="0 0 16 16">
-                                            <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828z" />
-                                        </svg>
+                                    <div className="ia-container-reco-content-bot-left" onClick={handleImprovePrompt}>
+                                        <i class="bi bi-stars"></i>
                                         <p className="ia-container-reco-content-bot-left-text">Améliorer mon prompt</p>
                                     </div>
                                 )}
-                                <div className="ia-container-reco-content-bot-right">
-                                    <p className="ia-container-reco-content-bot-righ-text">Propulsé par</p>
-                                    <img className="ia-container-reco-content-bot-right-img" src="./images/open-ai-logo.png"></img>
-
-                                </div>
                             </div>
-
                         </div>
-
-
                     </div>
                 )}
 

@@ -44,7 +44,7 @@ function LeftBar() {
       <div className="leftbar_links_box">
         <p className={`leftbar_links_box-title ${isCollapsed ? "hidden" : ""}`}>Vue Admin</p>
         <div className="leftbar_links_box-wrap">
-          <NavLink to="/" className={({ isActive }) => isActive ? "leftbar_links_box-item leftbar_links_box-item-active" : "leftbar_links_box-item"}>
+          <NavLink to="/dashboard" className={({ isActive }) => isActive ? "leftbar_links_box-item leftbar_links_box-item-active" : "leftbar_links_box-item"}>
             <img className="leftbar_links_box-item-icon" src="/images/dashboard-icon.png" alt="Dashboard Icon" />
             {!isCollapsed && "Dashboard"}
           </NavLink>

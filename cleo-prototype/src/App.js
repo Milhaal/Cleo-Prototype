@@ -11,17 +11,20 @@ import DashboardMain from "./components/dashboard/DashboardMain";
 import TestPage from "./components/TestPage"; 
 import "./App.css";
 import PromptComponent from "./components/PromptComponent";
+import LoginMain from "./components/login/LoginMain";
 
 function Layout() {
   const location = useLocation();
   const isPromptPage = location.pathname === "/prompt-component";
+  const isLoginPage = location.pathname === "/";
 
   return (
     <>
-      {!isPromptPage && <LeftBar />}
-      <div className={!isPromptPage ? "pages_wrapper" : ""}>
+      {!isPromptPage && !isLoginPage && <LeftBar />}
+      <div className={!isPromptPage && !isLoginPage ? "pages_wrapper" : ""}>
         <Routes>
-          <Route path="/" element={<DashboardMain />} />
+          <Route path="/" element={<LoginMain />} />
+          <Route path="/dashboard" element={<DashboardMain />} />
           <Route path="/team" element={<TeamMain />} />
           <Route path="/profile/:id" element={<TeamMember />} />
           <Route path="/catalog" element={<CatalogMain />} />
@@ -30,6 +33,7 @@ function Layout() {
           <Route path="/memberspace" element={<MemberSpaceMain />} />
           <Route path="/new-course" element={<TestPage />} /> 
           <Route path="/prompt-component" element={<PromptComponent />} /> 
+          <Route path="/login" element={<LoginMain />} />
         </Routes>
       </div>
     </>
