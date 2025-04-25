@@ -7,7 +7,7 @@ const LoginMain = () => {
 
     const handleLogin = () => {
         // Ici, tu peux ajouter la logique d'authentification si nécessaire
-        navigate('/dashboard'); // Rediriger vers la page Dashboard
+        navigate('/memberspace'); // Rediriger vers la page Dashboard
     };
 
     return (
@@ -15,15 +15,15 @@ const LoginMain = () => {
             <div className="login-wrapper-left">
                 <img className='login-wrapper-left-img' src='./images/login-img.png' alt="Login" />
                 <div className="login-wrapper-left-content">
-                    <h2 className="login-wrapper-left-title">Connectez-vous à Cleo Academy</h2>
-                    <p className="login-wrapper-left-text">L'excellence de nos experts au service de votre transformation technologique</p>
+                    <h2 className="login-wrapper-left-title">Apprenez dès maintenant !</h2>
+                    <p className="login-wrapper-left-text">Cleo, votre académie vers l’adoption réussie de l’IA</p>
                 </div>
             </div>
             <div className="login-wrapper-right">
                 <h2 className="login-wrapper-right-title">Se connecter</h2>
                 <div className="login-wrapper-right-form">
                     <div className="login-wrapper-right-form-row">
-                        <input className="login-wrapper-right-form-input" placeholder='Email' type="email" />
+                        <input className="login-wrapper-right-form-input" placeholder='Email' type="email"/>
                     </div>
                     <div className="login-wrapper-right-form-row">
                         <input className="login-wrapper-right-form-input" placeholder='Mot de passe' type='password' />
